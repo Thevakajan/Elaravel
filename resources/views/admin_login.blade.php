@@ -25,20 +25,6 @@
 
 
 
-
-	<!--[if lt IE 9]>
-	  	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<link id="ie-style" href="css/ie.css" rel="stylesheet">
-	<![endif]-->
-
-	<!--[if IE 9]>
-<link id="ie9style" href="{{('backend/css/ie9.css')}}" rel="stylesheet">
-	<![endif]-->
-
-	<!-- start: Favicon -->
-<link rel="shortcut icon" href="{{('backend/img/favicon.ico">
-	<!-- end: Favicon -->
-
 			<style type="text/css">
 			body { background: url(backend/img/bg-login.jpg) !important; }
 		</style>
@@ -57,19 +43,31 @@
 						<a href="index.html"><i class="halflings-icon home"></i></a>
 						<a href="#"><i class="halflings-icon cog"></i></a>
 					</div>
+					<p class="alert-danger">
+					<?php
+					$messege=Session::get('messege');
+					  if($messege)
+					  {
+						  echo $messege;
+						  Session::put('messege',null);
+					  }
+					 
+					?>
+					</p>
 					<h2>Login to your account</h2>
-					<form class="form-horizontal" action="" method="post">
+					<form class="form-horizontal" action="{{url('/admin-dashboard')}}" method="post">
+						{{csrf_field() }}
 						<fieldset>
 
-							<div class="input-prepend" title="Username">
+							<div class="input-prepend" title="Admin_Email">
 								<span class="add-on"><i class="halflings-icon user"></i></span>
-								<input class="input-large span10" name="admin_email" id="admin_email" type="text" placeholder="type username"/>
+								<input class="input-large span10" name="admin_email" type="text" placeholder="type email address"/>
 							</div>
 							<div class="clearfix"></div>
 
 							<div class="input-prepend" title="Password">
 								<span class="add-on"><i class="halflings-icon lock"></i></span>
-								<input class="input-large span10" name="admin_password" id="admin_password" type="password" placeholder="type password"/>
+								<input class="input-large span10" name="admin_password"  type="password" placeholder="type password"/>
 							</div>
 
 
