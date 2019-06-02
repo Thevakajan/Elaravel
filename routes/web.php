@@ -19,6 +19,8 @@ Route::get('/','HomeController@index' );
 
 
 // backend
+Route::get('/logout', 'SuperAdminController@logout');
 Route::get('/admin','AdminController@index' );
 Route::get('/dashboard','AdminController@show_dashboard' );
 Route::post('/admin-dashboard', 'AdminController@dashboard');
+Route::get('/add-category', 'CategoryController@index');
