@@ -317,7 +317,7 @@
 							</ul>
 							</a>
 
-							
+
 						</li>
 						<!-- end: User Dropdown -->
 					</ul>
@@ -338,7 +338,7 @@
 					<ul class="nav nav-tabs nav-stacked main-menu">
 						<li><a href="{{URL::to('/dashboard')}}"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Dashboard</span></a></li>
 
-						<li><a href="messages.html"><i class="icon-envelope"></i><span class="hidden-tablet"> All Category</span></a></li>
+						<li><a href="{{URL::to('/all-category')}}"><i class="icon-envelope"></i><span class="hidden-tablet"> All Category</span></a></li>
 
 					<li><a href="{{URL::to('/add-category')}}"><i class="icon-tasks"></i><span class="hidden-tablet"> Add Category</span></a></li>
 
@@ -350,7 +350,7 @@
 							<ul>
 								<li><a class="submenu" href="submenu.html"><i class="icon-file-alt"></i><span class="hidden-tablet"> Add Product</span></a></li>
 								<li><a class="submenu" href="submenu2.html"><i class="icon-file-alt"></i><span class="hidden-tablet"> All Product</span></a></li>
-								
+
 							</ul>
 						</li>
 						<li><a href="form.html"><i class="icon-edit"></i><span class="hidden-tablet"> Slider</span></a></li>
@@ -361,7 +361,7 @@
 
 						<li><a href="gallery.html"><i class="icon-picture"></i><span class="hidden-tablet"> Delivery Man</span></a></li>
 
-						
+
 					</ul>
 				</div>
 			</div>
