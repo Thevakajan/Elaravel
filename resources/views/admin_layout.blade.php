@@ -461,8 +461,19 @@
 		<script src="{{asset('backend/js/retina.js')}}"></script>
 
 		<script src="{{asset('backend/js/custom.js')}}"></script>
-	<!-- end: JavaScript-->
 
+<script type="text/javascript" src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js')}}"></script>
+	<script>
+    $(document).on("click", "#delete", function(e){
+     e.preventDefault();
+     var link = $(this).attr("href");
+     bootbox.confirm("Are you want to delete!!", function(confirmed){
+        if (confirmed) {
+            window.location.href = link;
+        };
+     });
+    });
+</script>
 </body>
 
 <!-- Mirrored from bootstrapmaster.com/live/metro/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2018 16:56:47 GMT -->
