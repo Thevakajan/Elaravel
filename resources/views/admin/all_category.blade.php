@@ -1,7 +1,6 @@
 @extends('admin_layout')
 @section('admin_content')
-
-			<ul class="breadcrumb">
+	<ul class="breadcrumb">
 				<li>
 					<i class="icon-home"></i>
 					<a href="index.html">Home</a>
@@ -24,24 +23,37 @@
 						<table class="table table-striped table-bordered bootstrap-datatable datatable">
 						  <thead>
 							  <tr>
-								  <th>Username</th>
-								  <th>Date registered</th>
-								  <th>Role</th>
-								  <th>Status</th>
-								  <th>Actions</th>
+						      <th>Category ID</th>
+							  <th>Category Name</th>
+							  <th>Category Descripton</th>
+							  <th>Status</th>
+							  <th>Actions</th>
 							  </tr>
 						  </thead>
+                           @foreach( $all_category_info as $v_category)
 						  <tbody>
 							<tr>
-								<td>Anton Phunihel</td>
-								<td class="center">2012/01/01</td>
-								<td class="center">Member</td>
+								<td>{{$v_category->category_id}}</td>
+								<td class="center">{{$v_category->category_name}}</td>
+								<td class="center">{{$v_category->category_description}}</td>
 								<td class="center">
-									<span class="label label-success">Active</span>
+                                @if($v_category->category_status==1)
+									<span class="badge badge-success">Active</span>
+                                 @else
+	                             <span class="badge badge-danger">Deactive</span>
+                                 @endif
+
 								</td>
 								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="halflings-icon white zoom-in"></i>
+                                @if($v_category->category_status==1)
+									<a class="btn btn-danger" href="{{URL::to('/deactive_category/'
+                                    .$v_category->category_id)}}">
+										<i class="halflings-icon white thumbs-down"></i>
+                                          @else
+                                <a class="btn btn-success" href="{{URL::to('/active_category/'
+                                    .$v_category->category_id)}}">
+								<i class="halflings-icon white thumbs-up"></i>
+                                @endif
 									</a>
 									<a class="btn btn-info" href="#">
 										<i class="halflings-icon white edit"></i>
@@ -51,14 +63,23 @@
 									</a>
 								</td>
 							</tr>
-							<tr>
+
+
 
 
 
 						  </tbody>
+                     @endforeach
 					  </table>
 					</div>
 				</div><!--/span-->
+
+			</div><!--/row-->
+
+
+
+
+
 
 			</div><!--/row-->
 
