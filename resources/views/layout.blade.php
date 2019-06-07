@@ -222,7 +222,7 @@
                                                   ->get();
                             foreach($all_published_category as $v_category){?>
                              <div class="panel panel-default">
-                                <div class="panel-heading">
+                                <div class="panel-heading"></div>
 									<h4 class="panel-title"><a href="#">{{$v_category->category_name}}</a></h4>
 								</div>
 							</div>

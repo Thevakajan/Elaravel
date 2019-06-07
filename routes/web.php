@@ -32,3 +32,7 @@ Route::post('/update-category/{category_id}', 'CategoryController@update_categor
 Route::get('/delete-category/{category_id}', 'CategoryController@delete_category');
 Route::get('/deactive_category/{category_id}','CategoryController@deactive_category');
 Route::get('/active_category/{category_id}','CategoryController@active_category');
+
+///Add manufacture
+Route::get('/add-manufacture', 'ManufactureController@index');
+
