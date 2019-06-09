@@ -83,7 +83,7 @@ CREATE TABLE `tbl_category` (
   `category_id` int(10) UNSIGNED NOT NULL,
   `category_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `category_description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `publication_status` int(2) DEFAULT '0',
+  `category_status` int(2) DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -92,7 +92,7 @@ CREATE TABLE `tbl_category` (
 -- Dumping data for table `tbl_category`
 --
 
-INSERT INTO `tbl_category` (`category_id`, `category_name`, `category_description`, `publication_status`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_category` (`category_id`, `category_name`, `category_description`, `category_status`, `created_at`, `updated_at`) VALUES
 (8, 'Men', 'this is men', 1, NULL, NULL),
 (9, 'Women', 'this is women', 1, NULL, NULL),
 (10, 'Child', 'this is child', 1, NULL, NULL),
