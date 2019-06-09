@@ -13,11 +13,6 @@
 
 Route::get('/','HomeController@index' );
 
-
-
-
-
-
 // backend
 Route::get('/logout', 'SuperAdminController@logout');
 Route::get('/admin','AdminController@index' );
@@ -43,3 +38,5 @@ Route::get('/active_manufacture/{manufacture_id}', 'ManufactureController@active
 Route::get('/edit-manufacture/{manufacture_id}', 'ManufactureController@edit_manufacture');
 Route::post('/update-manufacture/{manufacture_id}', 'ManufactureController@update_manufacture');
 
+//product route 
+Route::get('/add-product', 'ProductController@index');
