@@ -36,7 +36,7 @@
 					?>
 					</p>
 					<div class="box-content">
-						<form class="form-horizontal" action="{{url('/save-category')}}" method="post">
+						<form class="form-horizontal" action="{{url('/save-category')}}" method="post" enctype="multipart/from-data">
                             {{csrf_field()}}
 						  <fieldset>
 
@@ -48,53 +48,60 @@
 							</div>
 
                           <div class="control-group">
-                          	<label class="control-label" for="selectError3">Product Category </label>
+                          	<label class="control-label" for="selectError3"> Product Category </label>
                           <div class="control">
                           	<select id="selectError3">
-                          		<option></option>
-                          		<option></option>
-                          		<option></option>
-                          		<option></option>
-                          		<option></option>
+                          		<option>Select Category</option>
+                          		 <?php
+                           $all_published_category=DB::table('tbl_category')
+                                                  ->where('category_status',1)
+                                                  ->get();
+                            foreach($all_published_category as $v_category){?>     
+                          		<option value="{{$v_category->category_id}}">{{$v_category->category_name}}</option>
+                          	 <?php } ?> 
                           	</select>
                           	</div>
                          </div>
                          <div class="control-group">
-                          	<label class="control-label" for="selectError3">Manufacture Name  </label>
+                          	<label class="control-label" for="selectError3"> Manufacture Name  </label>
                           <div class="control">
                           	<select id="selectError3">
-                          		<option></option>
-                          		<option></option>
-                          		<option></option>
-                          		<option></option>
-                          		<option></option>
+                          		<option>Select Manufacture</option>
+                          		 <?php
+                           $all_published_manufacture=DB::table('tbl_manufacture')
+                                                  ->where('publication_status',1)
+                                                  ->get();
+                            foreach($all_published_manufacture as $v_manufacture){?>     
+                          		<option value="{{$v_manufacture->manufacture_id}}">{{$v_manufacture->manufacture_name}}</option>
+                          	 <?php } ?> 
+                          		
                           	</select>
                           	</div>
                          </div>
                             <div class="control-group hidden-phone">
 							  <label class="control-label" for="textarea2">Product Short Description</label>
 							  <div class="controls">
-								<textarea class="cleditor" name="category_description" rows="3"  required="" ></textarea>
+								<textarea class="cleditor" name="product_short_description" rows="3"  required="" ></textarea>
 							  </div>
                             </div>
                             <div class="control-group hidden-phone">
 							  <label class="control-label" for="textarea2">Product Log Description</label>
 							  <div class="controls">
-								<textarea class="cleditor" name="category_description" rows="3"  required="" ></textarea>
+								<textarea class="cleditor" name="product_long_description" rows="3"  required="" ></textarea>
 							  </div>
                             </div>
 
                            <div class="control-group">
 							  <label class="control-label" for="date01">Product Price</label>
 							  <div class="controls">
-								<input type="text" class="input-xlarge" name="product_name" required="" >
+								<input type="text" class="input-xlarge" name="product_price" required="" >
 							  </div>
 							</div>
 
                               <div class="control-group">
                               	 <label class="control-label" for="fileInput">Image</label>
                               	 <div class="controls">
-                              	 	<input class="input-file uniform_on" id="input-file" type="file" >
+                              	 	<input class="input-file uniform_on" name="product_image" type="file" >
 
                               	 	</div>
                               	</div>
@@ -102,20 +109,20 @@
                               <div class="control-group">
 							  <label class="control-label" for="date01">Product Size</label>
 							  <div class="controls">
-								<input type="text" class="input-xlarge" name="product_name" required="" >
+								<input type="text" class="input-xlarge" name="product_size" required="" >
 							  </div>
 							</div>
 
 							  <div class="control-group">
 							  <label class="control-label" for="date01">Product Color</label>
 							  <div class="controls">
-								<input type="text" class="input-xlarge" name="product_name" required="" >
+								<input type="text" class="input-xlarge" name="product_color" required="" >
 							  </div>
 							</div>
                             <div class="control-group hidden-phone">
 							  <label class="control-label" for="textarea2">Publication Status</label>
 							  <div class="controls">
-								<input type="checkbox" name="category_status" value="1" >
+								<input type="checkbox" name="publication_status" value="1" >
 							  </div>
                             </div>
 
