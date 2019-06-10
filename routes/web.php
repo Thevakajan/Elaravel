@@ -40,3 +40,4 @@ Route::post('/update-manufacture/{manufacture_id}', 'ManufactureController@updat
 
 //product route 
 Route::get('/add-product', 'ProductController@index');
+Route::get('/all-product', 'ProductController@all_product');
