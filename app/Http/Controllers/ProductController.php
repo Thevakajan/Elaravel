@@ -67,4 +67,30 @@ class ProductController extends Controller
 	    return view('admin_layout')
 	        ->with('admin.all_product',$manage_product);
    }
+
+   public function active_product($product_id)
+   {
+    DB::table('tbl_products')
+      ->where('product_id', $product_id)
+      ->update(['publication_status' => 1]);
+    Session::put('messege', 'Product Deactive successfully !! ');
+    return Redirect::to('/all-product');
+   }
+  public function deactive_product($product_id)
+  {
+    DB::table('tbl_products')
+      ->where('product_id', $product_id)
+      ->update(['publication_status' => 0]);
+    Session::put('messege', 'Product Active successfully !! ');
+    return Redirect::to('/all-product');
+  }
+
+  public function delete_product($product_id)
+  {
+    DB::table('tbl_products')
+      ->where('product_id', $product_id)
+      ->delete();
+    Session::put('messege', 'Product Delete successfully !! ');
+    return Redirect::to('/all-product');
+  }
 }
