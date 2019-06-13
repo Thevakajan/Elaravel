@@ -36,8 +36,8 @@
 					?>
 					</p>
 					<div class="box-content">
-						<form class="form-horizontal" action="{{url('/save-product')}}" method="post" enctype="multipart/from-data">
-                            {{csrf_field()}}
+						<form class="form-horizontal" action="{{url('/save-product')}}" method="post" enctype="multipart/form-data">
+						{{ csrf_field() }}
 						  <fieldset>
 
 							<div class="control-group">
@@ -98,14 +98,13 @@
 							  </div>
 							</div>
 
-                              <div class="control-group">
-                              	 <label class="control-label" for="fileInput">Image</label>
-                              	 <div class="controls">
-                              	 	<input class="input-file uniform_on" name="product_image" type="file" >
-
-                              	 	</div>
-                              	</div>
-
+                             
+							<div class="control-group">
+				  <label class="control-label" for="fileInput">Image </label>
+				  <div class="controls">
+					<input class="input-file uniform_on" name="product_image" id="fileInput" type="file">
+				  </div>
+				</div>  
                               <div class="control-group">
 							  <label class="control-label" for="date01">Product Size</label>
 							  <div class="controls">
