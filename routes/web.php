@@ -12,7 +12,9 @@
 */
 
 Route::get('/','HomeController@index' );
-
+//show category wise product here
+Route::get('/product_by_category/{category_id}','HomeController@show_product_by_category' );
+Route::get('/product_by_manufacture/{manufacture_id}','HomeController@show_product_by_manufacture' );
 // backend
 Route::get('/logout', 'SuperAdminController@logout');
 Route::get('/admin','AdminController@index' );

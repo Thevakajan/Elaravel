@@ -6,13 +6,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Home | E-Shopper</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/prettyPhoto.css" rel="stylesheet">
-    <link href="css/price-range.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-	<link href="css/main.css" rel="stylesheet">
-	<link href="css/responsive.css" rel="stylesheet">
+    <link href="{{URL::asset('css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('css/prettyPhoto.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('css/price-range.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('css/animate.css')}}" rel="stylesheet">
+	<link href="{{URL::asset('css/main.css')}}" rel="stylesheet">
+	<link href="{{URL::asset('css/responsive.css')}}" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -253,7 +253,7 @@
                                                   ->where('publication_status',1)
                                                   ->get();
                             foreach($all_published_manufacture as $v_manufacture){?> 
-									<li><a href="#"> <span class="pull-right"></span>{{$v_manufacture->manufacture_name}}</a></li>
+									<li><a href="{{URL::to('/product_by_manufacture/'.$v_manufacture->manufacture_id)}}"> <span class="pull-right"></span>{{$v_manufacture->manufacture_name}}</a></li>
 									 <?php } ?> 
 								</ul>
 							</div>
@@ -454,11 +454,11 @@
 
 
 
-    <script src="js/jquery.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.scrollUp.min.js"></script>
-	<script src="js/price-range.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script>
-    <script src="js/main.js"></script>
+    <script src="{{URL::asset('js/jquery.js')}}"></script>
+	<script src="{{URL::asset('js/bootstrap.min.js')}}"></script>
+	<script src="{{URL::asset('js/jquery.scrollUp.min.js')}}"></script>
+	<script src="{{URL::asset('js/price-range.js')}}"></script>
+    <script src="{{URL::asset('js/jquery.prttyPhoto.js')}}"></script>
+    <script src="{{URL::asset('js/main.js')}}"></script>
 </body>
 </html>
