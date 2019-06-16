@@ -16,6 +16,7 @@
 								<img src="{{URL::to('/images/product-details/rating.png')}}" alt="" />
 								<span>
 									<span>{{$product_by_details->product_price}} Tk</span>
+									
 									<form action="{{url('/add-to-cart')}}" method="post">
 										{{ csrf_field() }}
 										<label>Quantity:</label>
