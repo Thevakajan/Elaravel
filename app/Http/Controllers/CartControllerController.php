@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
+Use Cart;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 
 class CartControllerController extends Controller
@@ -21,6 +23,17 @@ class CartControllerController extends Controller
         Cart::add($data);
         return Redirect::to('/show-cart');
                      
+    }
+    public function show_cart()
+    {
+        $all_published_category=DB::table('tbl_category')
+        ->where('category_status',1)
+        ->get();
+        
+        $manage_published_category = view('pages.add_to_cart')
+            ->with('all_published_category', $all_published_category);
+        return view('layout')
+            ->with('pages.add_to_cart', $manage_published_category);
     }
 
 }
