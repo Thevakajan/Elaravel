@@ -51,7 +51,7 @@
 								<p class="cart_total_price">{{$v_contents->total}}</p>
 							</td>
 							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+							<a class="cart_quantity_delete" href="{{URL::to('/delete-to-cart/'.$v_contents->rowId)}}"><i class="fa fa-times"></i></a>
 							</td>
 						</tr>
 						<?php }?>
@@ -132,7 +132,7 @@
 							<li>Shipping Cost <span>Free</span></li>
 							<li>Total <span>{{Cart::total()}}</span></li>
 						</ul>
-						<a class="cart_quantity_delete" href="{{URL::to('/delete-to-cart/'.$v_contents->rowId)}}"><i class="fa fa-times"></i></a>
+						<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
 							<a class="btn btn-default check_out" href="">Check Out</a>
 					</div>
 				</div>
