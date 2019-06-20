@@ -19,6 +19,7 @@ Route::get('/view_product/{product_id}','HomeController@product_details_by_id');
 Route::post('/add-to-cart','CartControllerController@add_to_cart');
 Route::get('/show-cart','CartControllerController@show_cart');
 Route::get('/delete-to-cart/{rowId}','CartControllerController@delete_cart');
+Route::post('/update-cart','CartControllerController@update_cart');
 // backend
 Route::get('/logout', 'SuperAdminController@logout');
 Route::get('/admin','AdminController@index' );

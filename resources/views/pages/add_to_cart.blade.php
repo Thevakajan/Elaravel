@@ -1,9 +1,5 @@
  @extends('layout')
 @section('content')
-
-	
-		
-
 	<section id="cart_items">
 	<div class="container col-sm-12">
 			<div class="breadcrumbs">
@@ -42,9 +38,15 @@
 							</td>
 							<td class="cart_quantity">
 								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="{{$v_contents->qty}}" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
+								<form action="{{url('/update-cart')}}" method="post">
+									{{ csrf_field()}}
+									<input class="cart_quantity_input" type="text" name="qty" value="{{$v_contents->qty}}" autocomplete="off" size="2">
+									<input  type="hidden" name="rowId" value="{{$v_contents->rowId}}"  >
+									<input type="submit" name="submit" value="update" class="btn btn-sm btn-default">
+								</form>
+								
+								<!-- <input class="cart_quantity_input" type="text" name="quantity" value="{{$v_contents->qty}}" autocomplete="off" size="2"> -->
+								
 								</div>
 							</td>
 							<td class="cart_total">
