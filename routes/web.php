@@ -20,6 +20,11 @@ Route::post('/add-to-cart','CartControllerController@add_to_cart');
 Route::get('/show-cart','CartControllerController@show_cart');
 Route::get('/delete-to-cart/{rowId}','CartControllerController@delete_cart');
 Route::post('/update-cart','CartControllerController@update_cart');
+//login checkout route
+Route::get('/login-check','CheckoutController@login_check');
+Route::post('/customer_registration','CheckoutController@customer_registration');
+Route::get('/checkout','CheckoutController@checkout');
+Route::post('/save-shipping-details','CheckoutController@save_shipping_details');
 // backend
 Route::get('/logout', 'SuperAdminController@logout');
 Route::get('/admin','AdminController@index' );
