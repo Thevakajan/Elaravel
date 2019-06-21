@@ -21,13 +21,16 @@ Route::get('/show-cart','CartControllerController@show_cart');
 Route::get('/delete-to-cart/{rowId}','CartControllerController@delete_cart');
 Route::post('/update-cart','CartControllerController@update_cart');
 ///checkout route
-Route::get('/login-check','CheckoutController@login_check');
-Route::post('/customer_registration','CheckoutController@customer_registration');
+// Route::get('/login-check','CheckoutController@login_check');
+// Route::post('/customer_registration','CheckoutController@customer_registration');
+
 //login checkout route
 Route::get('/login-check','CheckoutController@login_check');
 Route::post('/customer_registration','CheckoutController@customer_registration');
-Route::post('/checkout','CheckoutController@checkout');
+Route::get('/checkout','CheckoutController@checkout');
 Route::post('/save-shipping-details','CheckoutController@save_shipping_details');
+Route::post('/customer_login','CheckoutController@customer_login');
+Route::get('/customer_logout','CheckoutController@customer_logout');
 // backend
 Route::get('/logout', 'SuperAdminController@logout');
 Route::get('/admin','AdminController@index' );
