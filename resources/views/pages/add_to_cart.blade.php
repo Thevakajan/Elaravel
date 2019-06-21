@@ -135,7 +135,7 @@
 							<li>Total <span>{{Cart::total()}}</span></li>
 						</ul>
 						<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-							<a class="btn btn-default check_out" href="">Check Out</a>
+							<a class="btn btn-default check_out" href="{{URL::to('/login-check')}}">Check Out</a>
 					</div>
 				</div>
 			</div>
