@@ -69,5 +69,95 @@ class CheckoutController extends Controller
       Session::flush();
       return Redirect::to('/');
     }
-
+     public function payment()
+    {
+      return view('pages.payment');
+    }
+    public function order_place(Request $request)
+    {
+      $payment_gateway=$request->payment_method;
+      // $total=Cart::total();
+      // echo $total;
+      
+      $pdata=array();
+      $pdata['payment_method']=$payment_gateway;
+      $pdata['payment_status']='pending';
+      $payment_id=DB::table('tbl_payment')
+             ->insertGetId($pdata);
+  
+      $odata=array();
+      $odata['customer_id']=Session::get('customer_id');
+      $odata['shipping_id']=Session::get('shipping_id');
+      $odata['payment_id']=$payment_id;
+      $odata['order_total']=Cart::total();
+      $odata['order_status']='pending';
+      $order_id=DB::table('tbl_order')
+               ->insertGetId($odata);
+  
+     $contents=Cart::content();
+     $oddata=array();
+     foreach ($contents as  $v_content) 
+     {
+        $oddata['order_id']=$order_id;
+        $oddata['product_id']=$v_content->id;
+        $oddata['product_name']=$v_content->name;
+        $oddata['product_price']=$v_content->price;
+        $oddata['product_sales_quantity']=$v_content->qty;
+        DB::table('tbl_order_details')
+            ->insert($oddata);
+     }
+     if ($payment_gateway=='handcash') {
+          
+           Cart::destroy();
+          return view('pages.handcash');
+         
+        
+     }elseif ($payment_gateway=='cart') {
+   
+      echo "cart";
+      
+     }elseif($payment_gateway=='paypal'){
+         echo "paypal";
+     }else{
+      echo "not selectd";
+     }
+    }
+     public function manage_order()
+    {
+     
+      $all_order_info=DB::table('tbl_order')
+                     ->join('tbl_customer','tbl_order.customer_id','=','tbl_customer.customer_id')
+                     ->select('tbl_order.*','tbl_customer.customer_name')
+                     ->get();
+       $manage_order=view('admin.manage_order')
+               ->with('all_order_info',$all_order_info);
+       return view('admin_layout')
+               ->with('admin.manage_order',$manage_order); 
+    }
+  public function view_order($order_id)
+  {
+      $order_by_id=DB::table('tbl_order')
+              ->join('tbl_customer','tbl_order.customer_id','=','tbl_customer.customer_id')
+              ->join('tbl_order_details','tbl_order.order_id','=','tbl_order_details.order_id')
+              ->join('tbl_shipping','tbl_order.shipping_id','=','tbl_shipping.shipping_id')
+              ->select('tbl_order.*','tbl_order_details.*','tbl_shipping.*','tbl_customer.*')
+              ->where('tbl_order.order_id',$order_id)
+              ->get();
+       $view_order=view('admin.view_order')
+               ->with('order_by_id',$order_by_id);
+       return view('admin_layout')
+               ->with('admin.view_order',$view_order); 
+                     // echo "<pre>";
+                     //  print_r($order_by_id);
+                     // echo "</pre>";
+  } 
+  public function delete_product($order_id)
+  {
+    $this->AdminAuthCheck();
+    DB::table('tbl_order')
+      ->where('order_id', $order_id)
+      ->delete();
+    Session::put('messege', 'Product Delete successfully !! ');
+    return Redirect::to('admin.view_order');
+  }
 }

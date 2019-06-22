@@ -31,6 +31,13 @@ Route::get('/checkout','CheckoutController@checkout');
 Route::post('/save-shipping-details','CheckoutController@save_shipping_details');
 Route::post('/customer_login','CheckoutController@customer_login');
 Route::get('/customer_logout','CheckoutController@customer_logout');
+
+////paymeny route
+Route::get('/payment','CheckoutController@payment');
+Route::post('/order-place','CheckoutController@order_place');
+Route::get('/manage-order','CheckoutController@manage_order');
+Route::get('/view-order/{order_id}','CheckoutController@view_order');
+Route::get('/delete-order/{order_id}', 'CheckoutController@delete_order');
 // backend
 Route::get('/logout', 'SuperAdminController@logout');
 Route::get('/admin','AdminController@index' );
